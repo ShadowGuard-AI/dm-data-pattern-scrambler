@@ -1,3 +1,5 @@
+![Banner](banner.png)
+
 # dm-data-pattern-scrambler
 Replaces identifiable patterns (e.g., phone number formats, credit card patterns) with random but valid patterns of the same type.  Useful for masking data that adheres to known formats, ensuring compliance while rendering the data unusable. - Focused on Tools designed to generate or mask sensitive data with realistic-looking but meaningless values
 
