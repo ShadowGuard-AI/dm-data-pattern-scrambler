@@ -22,9 +22,15 @@ class DataPatternScrambler:
             locale (str, optional): The locale for generating fake data. Defaults to 'en_US'.
         """
         self.fake = Faker(locale)
+        # Order matters here: credit_card runs before phone_number. A card
+        # number is a long digit run, and the phone pattern below would
+        # otherwise match its first ten digits, replace only that prefix,
+        # and leave the remaining real card digits in the output. The
+        # digit lookarounds on the phone pattern are a second guard: a
+        # phone match may not sit inside a longer digit run at all.
         self.patterns = {
-            "phone_number": r"(\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4})",
             "credit_card": r"(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9]{2})[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})",
+            "phone_number": r"(?<!\d)(\d{3}[-.\s]??\d{3}[-.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-.\s]??\d{4}|\d{3}[-.\s]??\d{4})(?!\d)",
             "email": r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}",
             "ip_address": r"((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)",
         }
