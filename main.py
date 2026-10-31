@@ -3,6 +3,7 @@ import logging
 import re
 import random
 import sys
+from pathlib import Path
 
 from faker import Faker
 
@@ -28,8 +29,12 @@ class DataPatternScrambler:
         # and leave the remaining real card digits in the output. The
         # digit lookarounds on the phone pattern are a second guard: a
         # phone match may not sit inside a longer digit run at all.
+        # The credit_card pattern carries the same kind of digit boundary
+        # guards, accepts contiguous runs of 13 to 19 digits and dashed or
+        # spaced groups of four, and leaves a run longer than 19 digits
+        # unmatched as a whole rather than masking a prefix of it.
         self.patterns = {
-            "credit_card": r"(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9]{2})[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})",
+            "credit_card": r"(?<!\d)(?:\d{4}[- ]\d{4}[- ]\d{4}[- ]\d{4}(?:[- ]\d{1,3})?|\d{4}[- ]\d{4}[- ]\d{4}[- ]\d{3}|\d{13,19})(?!\d)(?![- ]\d)",
             "phone_number": r"(?<!\d)(\d{3}[-.\s]??\d{3}[-.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-.\s]??\d{4}|\d{3}[-.\s]??\d{4})(?!\d)",
             "email": r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}",
             "ip_address": r"((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)",
@@ -138,6 +143,10 @@ def main():
                 logging.error(f"Invalid pattern: {pattern}.  Must be one of: {', '.join(valid_patterns)}")
                 sys.exit(1)
 
+
+    if args.file and args.output and Path(args.file).resolve() == Path(args.output).resolve():
+        logging.error("Output file is the same file as the input file. Refusing to overwrite the input in place.")
+        sys.exit(1)
 
     try:
         # Determine the input source
