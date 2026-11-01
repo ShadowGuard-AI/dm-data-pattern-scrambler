@@ -54,6 +54,13 @@ class DataPatternScrambler:
         if pattern_names is None:
             pattern_names = self.patterns.keys()
 
+        # The passes run in the order given, each over the output of
+        # the last, so the card before phone ordering the patterns
+        # dict relies on only holds for the default set. A caller who
+        # passes phone_number before credit_card reopens the prefix
+        # replacement the dict order was arranged to prevent, and fake
+        # values inserted by an early pass are scanned again by every
+        # later pass.
         for pattern_name in pattern_names:
             if pattern_name not in self.patterns:
                 logging.warning(f"Unknown pattern name: {pattern_name}. Skipping.")
@@ -77,6 +84,10 @@ class DataPatternScrambler:
             str: The text with the pattern replaced.
         """
         try:
+            # Every match draws its own fake value, so the same email
+            # or card appearing twice in a text is replaced by two
+            # different fakes. Nothing keeps a mapping, and text that
+            # relied on repeated values being equal loses that link.
             text = re.sub(pattern, lambda match: self.generate_fake_value(pattern_name, match), text)
             return text
         except re.error as e:
