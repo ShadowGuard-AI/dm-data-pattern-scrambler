@@ -3,164 +3,121 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dm Data Pattern Scrambler: what it is, how it runs, where it stops</title>
-<meta name="description" content="Dm Data Pattern Scrambler is one of my projects. The README in the repo is short, so this page sticks to what the files themselves show.">
+<title>dm-data-pattern-scrambler: Bookplate of the Unknown Collector</title>
 <style>
-:root {
-  --bg: #0a0e1a; --panel: #11182c; --ink: #e9edf5;
-  --mut: #16203b;
-  --acc: #ff8c42; --acc2: #ffc46b;
-  --line: #11182c;
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink);
-  font-family: Georgia, 'Times New Roman', serif; line-height: 1.55; }
-code, pre, .mono { font-family: 'Courier New', monospace; }
-a { color: var(--acc2); }
-.hero { padding: 3rem 6vw 1rem; }
-.hero img.banner { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; }
-.logo { width: 92px; height: 92px; border-radius: 18px;
-  border: 1px solid var(--line); }
-h1 { font-size: 2.4rem; margin: 0.4em 0 0.1em; }
-h2 { border-bottom: 2px solid var(--acc); padding-bottom: 0.2em;
-  margin-top: 2em; }
-.lede { font-size: 1.15rem; max-width: 62ch; }
-main { padding: 0 6vw 3rem; max-width: 1180px; margin: 0 auto; }
-.grid { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-.card { background: var(--panel); border: 1px solid var(--line);
-  border-radius: 12px; padding: 1rem 1.2rem; }
-.card.pop { animation: rise 0.7s ease both; }
-@keyframes rise { from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; } }
-pre.code { background: #101014; color: #e8e6df; padding: 1rem 1.2rem;
-  border-radius: 12px; overflow-x: auto; font-size: 0.86rem;
-  border-left: 5px solid var(--acc); }
-table { border-collapse: collapse; width: 100%; }
-td, th { border-bottom: 1px solid var(--line); padding: 0.45rem 0.6rem;
-  text-align: left; }
-.shots { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.shots img { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; background: #f4f1e8; }
-footer { padding: 2rem 6vw; border-top: 1px solid var(--line);
-  color: var(--mut); }
-.rail { display: flex; gap: 1.2rem; align-items: flex-start; }
-.rail nav { position: sticky; top: 1rem; min-width: 180px; }
-@media (max-width: 760px) { .rail { flex-direction: column; }
-  .rail nav { position: static; } }
-@media (prefers-reduced-motion: reduce) {
-  .card.pop { animation: none; } * { scroll-behavior: auto; } }
+@font-face { font-family: "Calistoga"; src: url("fonts/Calistoga.ttf") format("truetype"); }
+@font-face { font-family: "Alegreya Sans"; src: url("fonts/AlegreyaSans.ttf") format("truetype"); }
+body { background: #e3ded0; color: #2a2622; font-family: "Alegreya Sans", sans-serif; margin: 0; }
+header, section { background: #ece8dc; border: 2px solid #1a1714; margin: 24px auto; max-width: 860px; padding: 24px; }
+h1, h2 { font-family: "Calistoga", serif; color: #1a1714; }
+.entry-no { color: #b33a2b; font-family: "Calistoga", serif; }
+footer { background: #b08d5f; padding: 18px; text-align: center; }
+.slip { background: #cbb287; border: 2px solid #1a1714; border-left: 8px solid #b33a2b; padding: 12px 16px; }
+button.plate { background: #c9c2b4; border: 3px double #1a1714; font-family: "Calistoga", serif; padding: 12px 20px; cursor: pointer; }
+button.plate:hover { color: #000; }
+button.plate:focus { outline: 3px solid #b33a2b; outline-offset: 3px; }
+a { border-top: 6px solid #b08d5f; }
+img { max-width: 100%; }
+pre { white-space: pre-wrap; background: #f2eee2; padding: 16px; overflow-x: auto; }
 </style>
 </head>
-<body class="layout-note">
-<!-- This page exists for dm-data-pattern-scrambler alone: the layout (notebook),
-     the colors, and the type were picked for this project, not
-     shared with the other project pages. The code block below is
-     copied from the file it names, line for line. If it looks
-     plain, that is because the project is plain, and I would
-     rather the page match the project than dress it up. The one
-     thing I will not do here is oversell: what this project does
-     not do is stated on the page, not hidden from it. -->
-<header class="hero">
-  <img class="logo" src="assets/logo.png" alt="Dm Data Pattern Scrambler logo">
-  <img class="banner" src="assets/banner.png" alt="">
-  <h1>Dm Data Pattern Scrambler</h1>
-  <p class="mono"><a href="https://github.com/ShadowGuard-AI/dm-data-pattern-scrambler">github.com/ShadowGuard-AI/dm-data-pattern-scrambler</a></p>
+<body>
+<header>
+<h1>dm-data-pattern-scrambler: Bookplate of the Unknown Collector</h1>
+<p>A collector catalogue, one entry per plate, worked through in the order a cataloguer would open a newly arrived box of secondhand books. One open book on the shop table shows a bookplate with an empty centre. The library is implied. The name is not.</p>
+<img src="intro-banner.png" alt="Open secondhand book with a blank bookplate on a shop table, shelves and a window behind">
+<img src="banner.png" alt="The dispersed library on one long table, with the repo name lettered on the wooden edge strip of the table">
+<img src="logo.png" alt="One bookplate, double framed and blank, with a red pencil tick">
+<img src="scene.svg" alt="Animated scene of shelves, swaying ribbons, and a hand turning index tabs">
 </header>
 
-<main>
-  <section class="rail">
-    <nav aria-label="on this page">
-      <p class="mono"><a href="#run">Run it</a><br>
-      <a href="#files">The files</a><br>
-      <a href="#sheets">The sheets</a><br>
-      <a href="https://github.com/ShadowGuard-AI/dm-data-pattern-scrambler">The repo</a></p>
-    </nav>
-    <div>
-      <p class="lede">Dm Data Pattern Scrambler is one of my projects. The README in the repo is short, so this page sticks to what the files themselves show.</p>
-      <div class="grid">
-        <div class="card pop"><h3>What it is</h3>
-          <p>Dm Data Pattern Scrambler: 5 files, 222 counted
-          lines across Python 201, Markdown 20, Text 1. One job, done in the
-          open, in files you can read.</p></div>
-        <div class="card pop"><h3>The biggest piece</h3>
-          <p><code>main.py</code> carries the most
-          lines. If the project grows, that file is where the growth
-          lands first, for better or worse.</p></div>
-        <div class="card pop"><h3>The honest gap</h3>
-          <p>No test files yet. That is the honest gap, and the roadmap in the visuals folder says what the first one should cover.</p></div>
-      </div>
-      <section id="run">
-        <h2>Run it</h2>
-        <p>The repo README has the exact commands for this one. The
-        shape is the shape for most of my projects: clone it, read the
-        top file first so you know what will happen, then run it on
-        something you do not mind breaking.</p>
-        <p class="mono">$ git clone https://github.com/ShadowGuard-AI/dm-data-pattern-scrambler.git<br>$ cd dm-data-pattern-scrambler</p>
-      </section>
-      
-  <section aria-label="real code">
-    <h2>The code, as it sits in the repo</h2>
-    <p>From <code>main.py</code>, line 10 on. I did
-    not tidy it for the page. What you see is what the file has.</p>
-    <pre class="code"><code>logging.basicConfig(level=logging.INFO, format=&#x27;%(asctime)s - %(levelname)s - %(message)s&#x27;)
+<section>
+<h2><span class="entry-no">Entry 1.</span> The job</h2>
+<p>Replaces identifiable patterns (e.g., phone number formats, credit card patterns) with random but valid patterns of the same type.  Useful for masking data that adheres to known formats, ensuring compliance while rendering the data unusable. - Focused on Tools designed to generate or mask sensitive data with realistic-looking but meaningless values</p>
+<p>Identifiable patterns, with phone formats and card patterns named as examples, are replaced by random but valid patterns of the same type, so formatted data is masked, compliance is supported in the words of the description, and the result is rendered unusable as original data.</p>
+</section>
 
-class DataPatternScrambler:
-    &quot;&quot;&quot;
-    Replaces identifiable data patterns with random but valid patterns.
-    &quot;&quot;&quot;
+<section>
+<h2><span class="entry-no">Entry 2.</span> Acquisition, with one repair stated openly</h2>
+<p>Corrected line: <code>git clone https://github.com/ShadowGuard-AI/dm-data-pattern-scrambler</code></p>
+<p class="slip">Correction note: the README form drops the hyphen from the current organisation spelling. The published README line is preserved verbatim in the record block at the foot of this page. This corrected line is labelled as a correction, here and nowhere else.</p>
+</section>
 
-    def __init__(self, locale=&#x27;en_US&#x27;):
-        &quot;&quot;&quot;
-        Initializes the DataPatternScrambler with a Faker instance.
+<section>
+<h2><span class="entry-no">Entry 3.</span> Invocation shape</h2>
+<p><code>./dm-data-pattern-scrambler [params]</code></p>
+<p>This entry shows the invocation shape only. It shows no sample phone pattern, no sample card pattern, and no scrambled example of any kind.</p>
+</section>
 
-        Args:
-            locale (str, optional): The locale for generating fake data. Defaults to &#x27;en_US&#x27;.
-        &quot;&quot;&quot;
-        self.fake = Faker(locale)
-        # Order matters here: credit_card runs before phone_number. A card
-        # number is a long digit run, and the phone pattern below would
-        # otherwise match its first ten digits, replace only that prefix,
-        # and leave the remaining real card digits in the output. The
-        # digit lookarounds on the phone pattern are a second guard: a
-        # phone match may not sit inside a longer digit run at all.
-        self.patterns = {</code></pre>
-  </section>
-      <section id="files">
-        <h2>The files that matter</h2>
-        <table><tr><th>File</th><th>Lines</th></tr>
-        <tr><td><code>main.py</code></td><td>201</td></tr>
-        <tr><td><code>README.md</code></td><td>20</td></tr>
-        <tr><td><code>requirements.txt</code></td><td>1</td></tr>
-        <tr><td><code>banner.png</code></td><td>0</td></tr>
-        <tr><td><code>logo.png</code></td><td>0</td></tr>
-        </table>
-        <p>Names doing the work: <span class="mono">DataPatternScrambler, setup_argparse, main, __init__, scramble_text, replace_pattern, generate_fake_value</span>.</p>
-      </section>
-      <section id="sheets">
-        <h2>Drawn by hand</h2>
-        <p>I sketch my projects on notebook paper so I have to
-        understand them well enough to draw them. The full set,
-        with the counts and how they were counted, is the
-        <a href="https://github.com/ShadowGuard-AI/dm-data-pattern-scrambler/tree/main/dm-data-pattern-scrambler-Visuals">dm-data-pattern-scrambler-Visuals</a>
-        folder in the repo. Nothing is drawn over the binder holes.
-        That is a rule, not a style.</p>
-        <div class="shots">
-          <img src="assets/architecture.png" alt="Hand drawn architecture sheet for Dm Data Pattern Scrambler">
-          <img src="assets/flowchart.png" alt="Hand drawn flowchart sheet for Dm Data Pattern Scrambler">
-          <img src="assets/product-map.png" alt="Hand drawn product map sheet for Dm Data Pattern Scrambler">
-        </div>
-      </section>
-    </div>
-  </section>
-</main>
-<footer>
-  <p>Dm Data Pattern Scrambler is one of my projects. This page was written
-  from the repo itself on 2026-10-30: the counts are the
-  repo's counts, the code is the repo's code, and the gaps are the
-  repo's gaps.</p>
-</footer>
+<section>
+<h2><span class="entry-no">Entry 4.</span> Controls, in README order</h2>
+<ul>
+<li>- `-h`: Show help message and exit</li>
+<li>- `-p`: No description provided</li>
+<li>- `-l`: No description provided</li>
+<li>- `-f`: Path to a file to scramble. Overrides input_text argument if present.</li>
+<li>- `-o`: Path to the output file. If not provided, prints to stdout.</li>
+</ul>
+<p>The p control and the l control are recorded as undescribed absences. No description is invented for either of them on this page.</p>
+</section>
+
+<section>
+<h2><span class="entry-no">Entry 5.</span> Card forms, as rules and not examples</h2>
+<p>Credit card numbers are scrambled in these forms: contiguous runs of 13 to 19 digits, dashed groups of four, and spaced groups of four. Digit boundary guards keep a run longer than 19 digits from being partly scrambled: such a run is left unmatched as a whole rather than masking a prefix and leaving the rest in the output.</p>
+<h3>A Long Digit Run Is Left Whole</h3>
+<p>Contiguous runs of 13 to 19 digits count as card numbers. Dashed groups of four count. Spaced groups of four count. A digit run longer than 19 is left unmatched as a whole. Digits on this page appear as lengths and counts only. No digit string is printed.</p>
+</section>
+
+<section>
+<h2><span class="entry-no">Entry 6.</span> The output path guard</h2>
+<p>The output file must not be the input file. If the resolved output path equals the resolved input path, the run refuses at exit 1 before any write, including when the same file is named through a ./ alias or a symlink.</p>
+<p>Output must not be input. When the resolved output path equals the resolved input path, the run refuses at exit 1 before any write, including when the same file is reached through a ./ alias or a symlink.</p>
+</section>
+
+<section>
+<h2><span class="entry-no">Entry 7.</span> Licence facts, kept apart</h2>
+<p>First: the repository LICENSE file carries MIT terms. Its holder is reported by shape only: a run of years, a given name, a family name trailing it, a shorter form tucked inside round brackets and holding one initial, then a handle in square brackets.</p>
+<p>Second, labelled as the README record line: Copyright (c) ShadowGuardAI, preserved as published, with its unhyphenated organisation spelling. The catalogue never merges the two statements.</p>
+</section>
+
+<section>
+<h2>The catalogue desk</h2>
+<p><button class="plate" type="button">Scramble the Patterns</button></p>
+<p><label>File to Scramble <input type="text" name="file_to_scramble"></label></p>
+<p><label>Output File, Blank Means Stdout <input type="text" name="output_file"></label></p>
+<p>A link in this library announces itself with an index tab poking up at its head. A run stopped by the boundary guard earns its card a small uncut wax dot in the corner. Every other state goes dotless.</p>
+</section>
+
+<section>
+<h2>The live README, kept verbatim as the record</h2>
+<pre>![Banner](banner.png)
+
+# dm-data-pattern-scrambler
+Replaces identifiable patterns (e.g., phone number formats, credit card patterns) with random but valid patterns of the same type.  Useful for masking data that adheres to known formats, ensuring compliance while rendering the data unusable. - Focused on Tools designed to generate or mask sensitive data with realistic-looking but meaningless values
+
+## Install
+`git clone https://github.com/ShadowGuardAI/dm-data-pattern-scrambler`
+
+## Usage
+`./dm-data-pattern-scrambler [params]`
+
+## Parameters
+- `-h`: Show help message and exit
+- `-p`: No description provided
+- `-l`: No description provided
+- `-f`: Path to a file to scramble. Overrides input_text argument if present.
+- `-o`: Path to the output file. If not provided, prints to stdout.
+
+## Credit card patterns and output path
+
+Credit card numbers are scrambled in these forms: contiguous runs of 13 to 19 digits, dashed groups of four, and spaced groups of four. Digit boundary guards keep a run longer than 19 digits from being partly scrambled: such a run is left unmatched as a whole rather than masking a prefix and leaving the rest in the output.
+
+The output file must not be the input file. If the resolved output path equals the resolved input path, the run refuses at exit 1 before any write, including when the same file is named through a ./ alias or a symlink.
+
+## License
+Copyright (c) ShadowGuardAI</pre>
+</section>
+
+<footer>Kraft band. The book closes over its plate, the catalogue entry is filed, and the press rests.</footer>
 </body>
 </html>

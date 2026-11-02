@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" role="img" aria-label="The dispersed library in three bands: shelves fixed while window light drifts across the spines in the far band, ribbon bookmarks swaying and one slipping farther out in the middle band, and a hand at the frame edge turning index tabs one at a time in the near band">
+<rect width="900" height="300" fill="#dcd8cb"/>
+<g fill="#8a8070" stroke="#1a1714" stroke-width="2"><rect x="330" y="14" width="26" height="76"/><rect x="362" y="14" width="26" height="76"/><rect x="394" y="14" width="26" height="76"/><rect x="470" y="14" width="26" height="76"/><rect x="502" y="14" width="26" height="76"/><rect x="534" y="14" width="26" height="76"/><rect x="610" y="14" width="26" height="76"/><rect x="642" y="14" width="26" height="76"/><rect x="674" y="14" width="26" height="76"/></g>
+<g><rect x="336" y="26" width="14" height="9" fill="#b85c4a"/><rect x="476" y="26" width="14" height="9" fill="#5c7890"/><rect x="616" y="26" width="14" height="9" fill="#baa05c"/></g>
+<rect x="20" y="10" width="90" height="120" fill="#e6eadc" stroke="#1a1714" stroke-width="3"/>
+<polygon points="110,20 420,90 420,104 110,44" fill="#fffbe8" opacity="0.5"><animate attributeName="opacity" values="0.25; 0.6; 0.25" dur="14s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 0; 30 22; 0 0" dur="14s" repeatCount="indefinite"/></polygon>
+<rect x="0" y="140" width="900" height="160" fill="#70583c"/>
+<g stroke="#b33a2b" stroke-width="6" fill="none"><path d="M300 150 C 296 190, 310 220, 302 258"><animateTransform attributeName="transform" type="rotate" values="0 300 150; 3 300 150; 0 300 150; -3 300 150; 0 300 150" dur="9s" repeatCount="indefinite"/></path></g>
+<g stroke="#8c2c22" stroke-width="6" fill="none"><path d="M560 150 C 556 186, 566 214, 558 244"><animateTransform attributeName="transform" type="translate" values="0 0; 0 14; 0 14" dur="11s" repeatCount="indefinite"/></path></g>
+<g fill="#b08d5f" stroke="#1a1714" stroke-width="2"><rect x="240" y="146" width="150" height="20"/><rect x="500" y="146" width="150" height="20"/></g>
+<g><rect x="120" y="196" width="330" height="80" fill="#ece5d4" stroke="#1a1714" stroke-width="2"/><rect x="150" y="214" width="120" height="46" fill="#c9c2b4" stroke="#1a1714" stroke-width="3"/><rect x="158" y="221" width="104" height="32" fill="none" stroke="#1a1714" stroke-width="1"/><line x1="252" y1="248" x2="264" y2="238" stroke="#b33a2b" stroke-width="3"/></g>
+<g fill="#ded8cb" stroke="#1a1714"><rect x="540" y="206" width="34" height="22"><animateTransform attributeName="transform" type="rotate" values="0 540 228; -18 540 228; 0 540 228" dur="10s" repeatCount="indefinite"/></rect><rect x="584" y="206" width="34" height="22"/><rect x="628" y="206" width="34" height="22"/></g>
+<path d="M700 196 L742 188 L742 214 L702 220 Z" fill="#d8b47a" stroke="#1a1714" stroke-width="2"/>
+</svg>
