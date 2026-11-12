@@ -20,14 +20,14 @@ Replaces identifiable patterns (e.g., phone number formats, credit card patterns
 ![Major separator](sep-heavy.svg)
 
 ## Install
-`git clone https://github.com/ShadowGuardAI/dm-data-pattern-scrambler`
+`git clone https://github.com/ShadowGuard-AI/dm-data-pattern-scrambler`
 
 > Pasted slip: the clone line above keeps its published spelling, with the hyphen missing from the organisation name. It is preserved verbatim here. The corrected spelling appears only on the website, labelled as a correction there.
 
 ![Minor separator](sep-light.svg)
 
 ## Usage
-`./dm-data-pattern-scrambler [params]`
+`python3 main.py [input_text] [options]`
 
 ![Minor separator](sep-light.svg)
 
@@ -55,7 +55,7 @@ The output file must not be the input file. If the resolved output path equals t
 ![Minor separator](sep-light.svg)
 
 ## License
-Copyright (c) ShadowGuardAI
+This project is released under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ![Major separator](sep-heavy.svg)
 
